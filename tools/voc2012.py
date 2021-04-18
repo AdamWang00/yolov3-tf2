@@ -34,9 +34,16 @@ def build_example(annotation, class_map):
     truncated = []
     views = []
     difficult_obj = []
+
+    has_person = False
+
     if 'object' in annotation:
-        print("DEBUG", annotation['object'])
         for obj in annotation['object']:
+            if obj['name'] == 'person':
+                has_person = True
+            else:
+                continue
+
             difficult = bool(int(obj['difficult']))
             difficult_obj.append(int(difficult))
 
@@ -49,27 +56,29 @@ def build_example(annotation, class_map):
             truncated.append(int(obj['truncated']))
             views.append(obj['pose'].encode('utf8'))
 
-    example = tf.train.Example(features=tf.train.Features(feature={
-        'image/height': tf.train.Feature(int64_list=tf.train.Int64List(value=[height])),
-        'image/width': tf.train.Feature(int64_list=tf.train.Int64List(value=[width])),
-        'image/filename': tf.train.Feature(bytes_list=tf.train.BytesList(value=[
-            annotation['filename'].encode('utf8')])),
-        'image/source_id': tf.train.Feature(bytes_list=tf.train.BytesList(value=[
-            annotation['filename'].encode('utf8')])),
-        'image/key/sha256': tf.train.Feature(bytes_list=tf.train.BytesList(value=[key.encode('utf8')])),
-        'image/encoded': tf.train.Feature(bytes_list=tf.train.BytesList(value=[img_raw])),
-        'image/format': tf.train.Feature(bytes_list=tf.train.BytesList(value=['jpeg'.encode('utf8')])),
-        'image/object/bbox/xmin': tf.train.Feature(float_list=tf.train.FloatList(value=xmin)),
-        'image/object/bbox/xmax': tf.train.Feature(float_list=tf.train.FloatList(value=xmax)),
-        'image/object/bbox/ymin': tf.train.Feature(float_list=tf.train.FloatList(value=ymin)),
-        'image/object/bbox/ymax': tf.train.Feature(float_list=tf.train.FloatList(value=ymax)),
-        'image/object/class/text': tf.train.Feature(bytes_list=tf.train.BytesList(value=classes_text)),
-        'image/object/class/label': tf.train.Feature(int64_list=tf.train.Int64List(value=classes)),
-        'image/object/difficult': tf.train.Feature(int64_list=tf.train.Int64List(value=difficult_obj)),
-        'image/object/truncated': tf.train.Feature(int64_list=tf.train.Int64List(value=truncated)),
-        'image/object/view': tf.train.Feature(bytes_list=tf.train.BytesList(value=views)),
-    }))
-    return example
+    if has_person:
+        return tf.train.Example(features=tf.train.Features(feature={
+            'image/height': tf.train.Feature(int64_list=tf.train.Int64List(value=[height])),
+            'image/width': tf.train.Feature(int64_list=tf.train.Int64List(value=[width])),
+            'image/filename': tf.train.Feature(bytes_list=tf.train.BytesList(value=[
+                annotation['filename'].encode('utf8')])),
+            'image/source_id': tf.train.Feature(bytes_list=tf.train.BytesList(value=[
+                annotation['filename'].encode('utf8')])),
+            'image/key/sha256': tf.train.Feature(bytes_list=tf.train.BytesList(value=[key.encode('utf8')])),
+            'image/encoded': tf.train.Feature(bytes_list=tf.train.BytesList(value=[img_raw])),
+            'image/format': tf.train.Feature(bytes_list=tf.train.BytesList(value=['jpeg'.encode('utf8')])),
+            'image/object/bbox/xmin': tf.train.Feature(float_list=tf.train.FloatList(value=xmin)),
+            'image/object/bbox/xmax': tf.train.Feature(float_list=tf.train.FloatList(value=xmax)),
+            'image/object/bbox/ymin': tf.train.Feature(float_list=tf.train.FloatList(value=ymin)),
+            'image/object/bbox/ymax': tf.train.Feature(float_list=tf.train.FloatList(value=ymax)),
+            'image/object/class/text': tf.train.Feature(bytes_list=tf.train.BytesList(value=classes_text)),
+            'image/object/class/label': tf.train.Feature(int64_list=tf.train.Int64List(value=classes)),
+            'image/object/difficult': tf.train.Feature(int64_list=tf.train.Int64List(value=difficult_obj)),
+            'image/object/truncated': tf.train.Feature(int64_list=tf.train.Int64List(value=truncated)),
+            'image/object/view': tf.train.Feature(bytes_list=tf.train.BytesList(value=views)),
+        }))
+    else:
+        return None
 
 
 def parse_xml(xml):
@@ -102,7 +111,8 @@ def main(_argv):
         annotation_xml = lxml.etree.fromstring(open(annotation_xml).read())
         annotation = parse_xml(annotation_xml)['annotation']
         tf_example = build_example(annotation, class_map)
-        writer.write(tf_example.SerializeToString())
+        if tf_example is not None:
+            writer.write(tf_example.SerializeToString())
     writer.close()
     logging.info("Done")
 
