@@ -35,6 +35,7 @@ def build_example(annotation, class_map):
     views = []
     difficult_obj = []
     if 'object' in annotation:
+        print("DEBUG", annotation['object'])
         for obj in annotation['object']:
             difficult = bool(int(obj['difficult']))
             difficult_obj.append(int(difficult))
