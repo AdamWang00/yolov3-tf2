@@ -105,15 +105,20 @@ def main(_argv):
     image_list = open(os.path.join(
         FLAGS.data_dir, 'ImageSets', 'Main', '%s.txt' % FLAGS.split)).read().splitlines()
     logging.info("Image list loaded: %d", len(image_list))
+    total_count = 0
+    person_count = 0
     for name in tqdm.tqdm(image_list):
+        total_count += 1
         annotation_xml = os.path.join(
             FLAGS.data_dir, 'Annotations', name + '.xml')
         annotation_xml = lxml.etree.fromstring(open(annotation_xml).read())
         annotation = parse_xml(annotation_xml)['annotation']
         tf_example = build_example(annotation, class_map)
         if tf_example is not None:
+            person_count += 1
             writer.write(tf_example.SerializeToString())
     writer.close()
+    print("With Person:", person_count, "Total:", total_count)
     logging.info("Done")
 
 
