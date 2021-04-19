@@ -6,7 +6,7 @@ python train.py \
 	--num_classes 1 \
 	--mode fit --transfer darknet \
 	--batch_size 32 \
-	--epochs 10 \
+	--epochs 20 \
 	--weights ./checkpoints/yolov3.tf \
 	--weights_num_classes 80
 
@@ -18,8 +18,8 @@ python train.py \
 	--num_classes 1 \
 	--mode fit --transfer fine_tune \
 	--batch_size 32 \
-	--epochs 10 \
-	--weights ./checkpoints/yolov3_train_10.tf \
+	--epochs 15 \
+	--weights ./checkpoints/yolov3_train_5.tf \
 	--weights_num_classes 1
 
 Infer (given image):
