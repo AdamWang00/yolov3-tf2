@@ -217,7 +217,7 @@ def yolo_nms(outputs, anchors, masks, classes):
         max_output_size=FLAGS.yolo_max_boxes,
         iou_threshold=FLAGS.yolo_iou_threshold,
         score_threshold=FLAGS.yolo_score_threshold,
-        soft_nms_sigma=10.0
+        soft_nms_sigma=0.5
     )
     
     num_valid_nms_boxes = tf.shape(selected_indices)[0]
