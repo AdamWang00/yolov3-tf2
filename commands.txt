@@ -58,7 +58,7 @@ Infer (given image):
 python detect.py \
 	--classes ./data/voc2012.names \
 	--num_classes 1 \
-	--weights ./checkpoints/yolov3_train_4.tf \
+	--weights ./checkpoints/yolov3_train_8.tf \
 	--image ./crowd.jpg
 
 Infer (validation set)
