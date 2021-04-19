@@ -132,7 +132,7 @@ def main(_argv):
         avg_loss = tf.keras.metrics.Mean('loss', dtype=tf.float32)
         avg_val_loss = tf.keras.metrics.Mean('val_loss', dtype=tf.float32)
 
-        for epoch in range(1 + epoch_offset, FLAGS.epochs + 1 + epoch_offset):
+        for epoch in range(1 + FLAGS.epoch_offset, FLAGS.epochs + 1 + FLAGS.epoch_offset):
             for batch, (images, labels) in enumerate(train_dataset):
                 with tf.GradientTape() as tape:
                     outputs = model(images, training=True)
