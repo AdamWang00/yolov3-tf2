@@ -1,33 +1,22 @@
-LATEST WEIGHT FILE NAMES:
-2 to 8
-Epoch 2/10
-114/114 [==============================] - 193s 2s/step - loss: 13.4445 - yolo_output_0_loss: 0.3423 - yolo_output_1_loss: 0.7152 - yolo_output_2_loss: 1.6125 - val_loss: 19.9408 - val_yolo_output_0_
-loss: 3.0662 - val_yolo_output_1_loss: 3.9537 - val_yolo_output_2_loss: 2.1688
-Epoch 00002: saving model to checkpoints/yolov3_train_2.tf
-Epoch 3/10
-114/114 [==============================] - 194s 2s/step - loss: 13.2235 - yolo_output_0_loss: 0.3452 - yolo_output_1_loss: 0.6402 - yolo_output_2_loss: 1.4936 - val_loss: 20.6744 - val_yolo_output_0_
-loss: 3.4920 - val_yolo_output_1_loss: 4.2510 - val_yolo_output_2_loss: 2.2104
-Epoch 00003: saving model to checkpoints/yolov3_train_3.tf
-Epoch 4/10
-114/114 [==============================] - 194s 2s/step - loss: 12.9004 - yolo_output_0_loss: 0.3985 - yolo_output_1_loss: 0.4815 - yolo_output_2_loss: 1.3074 - val_loss: 19.8081 - val_yolo_output_0_
-loss: 2.9243 - val_yolo_output_1_loss: 4.0786 - val_yolo_output_2_loss: 2.1179
-Epoch 00004: saving model to checkpoints/yolov3_train_4.tf
-Epoch 5/10
-114/114 [==============================] - 193s 2s/step - loss: 12.5687 - yolo_output_0_loss: 0.2730 - yolo_output_1_loss: 0.4491 - yolo_output_2_loss: 1.1683 - val_loss: 19.6572 - val_yolo_output_0_
-loss: 2.8771 - val_yolo_output_1_loss: 4.0547 - val_yolo_output_2_loss: 2.0759
-Epoch 00005: saving model to checkpoints/yolov3_train_5.tf
-Epoch 6/10
-114/114 [==============================] - 194s 2s/step - loss: 12.3535 - yolo_output_0_loss: 0.2527 - yolo_output_1_loss: 0.3911 - yolo_output_2_loss: 1.0699 - val_loss: 20.4483 - val_yolo_output_0_
-loss: 3.1570 - val_yolo_output_1_loss: 4.6050 - val_yolo_output_2_loss: 2.0756
-Epoch 00006: saving model to checkpoints/yolov3_train_6.tf
-Epoch 7/10
-114/114 [==============================] - 193s 2s/step - loss: 12.0661 - yolo_output_0_loss: 0.2365 - yolo_output_1_loss: 0.3528 - yolo_output_2_loss: 0.8766 - val_loss: 20.4616 - val_yolo_output_0_
-loss: 3.2406 - val_yolo_output_1_loss: 4.5620 - val_yolo_output_2_loss: 2.0890
-Epoch 00007: saving model to checkpoints/yolov3_train_7.tf
-Epoch 8/10
-114/114 [==============================] - 193s 2s/step - loss: 12.1995 - yolo_output_0_loss: 0.2955 - yolo_output_1_loss: 0.4998 - yolo_output_2_loss: 0.8417 - val_loss: 25.9871 - val_yolo_output_0_
-loss: 3.7754 - val_yolo_output_1_loss: 4.5761 - val_yolo_output_2_loss: 7.0916
-
+WEIGHT FILE NAMES:
+yolov3_train_exp1: 19.7 validation loss
+16 to 19
+Epoch 16/20
+114/114 [==============================] - 200s 2s/step - loss: 13.2181 - yolo_output_0_loss: 0.2860 - yolo_output_1_loss: 0.6149 - yolo_output_2_loss: 1.6212 - val_loss: 19.380
+8 - val_yolo_output_0_loss: 2.5989 - val_yolo_output_1_loss: 3.7001 - val_yolo_output_2_loss: 2.4095
+Epoch 00016: saving model to checkpoints/yolov3_train_16.tf
+Epoch 17/20
+114/114 [==============================] - 201s 2s/step - loss: 12.8770 - yolo_output_0_loss: 0.2750 - yolo_output_1_loss: 0.5066 - yolo_output_2_loss: 1.4307 - val_loss: 19.420
+7 - val_yolo_output_0_loss: 2.7791 - val_yolo_output_1_loss: 3.6294 - val_yolo_output_2_loss: 2.3710
+Epoch 00017: saving model to checkpoints/yolov3_train_17.tf
+Epoch 18/20
+114/114 [==============================] - 200s 2s/step - loss: 12.6184 - yolo_output_0_loss: 0.2035 - yolo_output_1_loss: 0.4020 - yolo_output_2_loss: 1.3800 - val_loss: 19.474
+6 - val_yolo_output_0_loss: 2.8525 - val_yolo_output_1_loss: 3.7111 - val_yolo_output_2_loss: 2.3041
+Epoch 00018: saving model to checkpoints/yolov3_train_18.tf
+Epoch 19/20
+114/114 [==============================] - 201s 2s/step - loss: 12.4768 - yolo_output_0_loss: 0.1776 - yolo_output_1_loss: 0.3921 - yolo_output_2_loss: 1.3086 - val_loss: 19.704
+0 - val_yolo_output_0_loss: 2.9549 - val_yolo_output_1_loss: 3.9936 - val_yolo_output_2_loss: 2.1845
+Epoch 00019: saving model to checkpoints/yolov3_train_19.tf
 
 Train (new transfer):
 python train.py \
@@ -37,7 +26,7 @@ python train.py \
 	--num_classes 1 \
 	--mode fit --transfer darknet \
 	--batch_size 32 \
-	--epochs 10 \
+	--epochs 20 \
 	--weights ./checkpoints/yolov3.tf \
 	--weights_num_classes 80
 
@@ -50,7 +39,7 @@ python train.py \
 	--mode fit --transfer fine_tune \
 	--batch_size 32 \
 	--epochs 10 \
-	--weights ./checkpoints/yolov3_train_4.tf \
+	--weights ./checkpoints/yolov3_train_20.tf \
 	--weights_num_classes 1
 	--learning_rate 0.0001
 
