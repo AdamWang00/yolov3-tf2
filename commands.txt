@@ -1,6 +1,5 @@
 WEIGHT FILE NAMES:
-yolov3_train_exp1: 19.7 validation loss
-yolov3_train_exp2: 19.4 validation loss
+yolov3_transfer: 19.5 validation loss
 
 Train (new transfer):
 python train.py \
@@ -10,7 +9,7 @@ python train.py \
 	--num_classes 1 \
 	--mode fit --transfer darknet \
 	--batch_size 32 \
-	--epochs 20 \
+	--epochs 10 \
 	--weights ./checkpoints/yolov3.tf \
 	--weights_num_classes 80
 
@@ -23,9 +22,9 @@ python train.py \
 	--mode fit --transfer fine_tune \
 	--batch_size 32 \
 	--epochs 10 \
-	--weights ./checkpoints/yolov3_train_16.tf \
+	--weights ./checkpoints/yolov3_train_10.tf \
 	--weights_num_classes 1 \
-	--learning_rate 0.0001
+	--learning_rate 0.0003
 
 Infer (given image):
 python detect.py \
