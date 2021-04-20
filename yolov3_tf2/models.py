@@ -37,12 +37,6 @@ yolo_tiny_anchors = np.array([(10, 14), (23, 27), (37, 58),
                              np.float32) / 416
 yolo_tiny_anchor_masks = np.array([[3, 4, 5], [0, 1, 2]])
 
-# AUGMENT ANCHORS TO BE MORE PERSON-LIKE
-yolo_anchors[:, 0] *= 3/4 # width
-yolo_anchors[:, 1] *= 4/3 # height
-yolo_tiny_anchors[:, 0] *= 3/4 # width
-yolo_tiny_anchors[:, 1] *= 4/3 # height
-
 def DarknetConv(x, filters, size, strides=1, batch_norm=True):
     if strides == 1:
         padding = 'same'

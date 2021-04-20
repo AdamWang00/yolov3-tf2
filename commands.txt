@@ -1,22 +1,6 @@
 WEIGHT FILE NAMES:
-yolov3_train_exp1: 19.5 validation loss
-16 to 19
-Epoch 16/20
-114/114 [==============================] - 200s 2s/step - loss: 13.2181 - yolo_output_0_loss: 0.2860 - yolo_output_1_loss: 0.6149 - yolo_output_2_loss: 1.6212 - val_loss: 19.380
-8 - val_yolo_output_0_loss: 2.5989 - val_yolo_output_1_loss: 3.7001 - val_yolo_output_2_loss: 2.4095
-Epoch 00016: saving model to checkpoints/yolov3_train_16.tf
-Epoch 17/20
-114/114 [==============================] - 201s 2s/step - loss: 12.8770 - yolo_output_0_loss: 0.2750 - yolo_output_1_loss: 0.5066 - yolo_output_2_loss: 1.4307 - val_loss: 19.420
-7 - val_yolo_output_0_loss: 2.7791 - val_yolo_output_1_loss: 3.6294 - val_yolo_output_2_loss: 2.3710
-Epoch 00017: saving model to checkpoints/yolov3_train_17.tf
-Epoch 18/20
-114/114 [==============================] - 200s 2s/step - loss: 12.6184 - yolo_output_0_loss: 0.2035 - yolo_output_1_loss: 0.4020 - yolo_output_2_loss: 1.3800 - val_loss: 19.474
-6 - val_yolo_output_0_loss: 2.8525 - val_yolo_output_1_loss: 3.7111 - val_yolo_output_2_loss: 2.3041
-Epoch 00018: saving model to checkpoints/yolov3_train_18.tf
-Epoch 19/20
-114/114 [==============================] - 201s 2s/step - loss: 12.4768 - yolo_output_0_loss: 0.1776 - yolo_output_1_loss: 0.3921 - yolo_output_2_loss: 1.3086 - val_loss: 19.704
-0 - val_yolo_output_0_loss: 2.9549 - val_yolo_output_1_loss: 3.9936 - val_yolo_output_2_loss: 2.1845
-Epoch 00019: saving model to checkpoints/yolov3_train_19.tf
+yolov3_train_exp1: 19.7 validation loss
+yolov3_train_exp2: 19.4 validation loss
 
 Train (new transfer):
 python train.py \
