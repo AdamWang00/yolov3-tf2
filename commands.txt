@@ -1,5 +1,5 @@
 WEIGHT FILE NAMES:
-yolov3_train_exp1: 19.7 validation loss
+yolov3_train_exp1: 19.5 validation loss
 16 to 19
 Epoch 16/20
 114/114 [==============================] - 200s 2s/step - loss: 13.2181 - yolo_output_0_loss: 0.2860 - yolo_output_1_loss: 0.6149 - yolo_output_2_loss: 1.6212 - val_loss: 19.380
@@ -39,8 +39,8 @@ python train.py \
 	--mode fit --transfer fine_tune \
 	--batch_size 32 \
 	--epochs 10 \
-	--weights ./checkpoints/yolov3_train_20.tf \
-	--weights_num_classes 1
+	--weights ./checkpoints/yolov3_train_16.tf \
+	--weights_num_classes 1 \
 	--learning_rate 0.0001
 
 Infer (given image):
