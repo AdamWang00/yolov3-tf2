@@ -10,7 +10,7 @@ Adapted from https://github.com/zzh8829/yolov3-tf2.
 pip install -r requirements.txt
 ```
 
-### Run Detection (outputs bounding boxes of persons)
+### Run Detection
 
 To use our transfer learning weights, run
 
@@ -21,7 +21,7 @@ python detect.py \
 	--weights ./checkpoints/yolov3_transfer.tf \
 	--image <path to image file>
 ```
-The output will be saved to `output.jpg`.
+The output image, with bounding boxes of persons drawn, will be saved to `output.jpg`.
 
 ## Command Line Args Reference
 
