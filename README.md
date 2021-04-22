@@ -21,6 +21,7 @@ python detect.py \
 	--weights ./checkpoints/yolov3_transfer.tf \
 	--image <path to image file>
 ```
+The output will be saved to `output.jpg`.
 
 ## Command Line Args Reference
 
